@@ -33,5 +33,13 @@ pnpm i
 pnpm run start
 ```
 
+## 使用方法
+目前，拢共就俩API
+
+| API | 说明 | Method | 参数 | 返回值|
+| - | - | - | - | - |
+| /chat | 纯文本对话| POST | `{"message": "Feint是谁"}` | `{ "result": "Feint 是一名荷兰电子音乐制作人和 DJ。}` |
+| /clear | 清空上下文 | GET | `{ msg: "成功清除上下文！" }`  | 
+
 ## TODO
 - 多模态对话
