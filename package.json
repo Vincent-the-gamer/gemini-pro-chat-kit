@@ -1,0 +1,18 @@
+{
+  "name": "gemini-pro-chat-kit",
+  "version": "0.1.0",
+  "description": "一个解决了中国国内代理问题的Gemini Pro对话服务",
+  "type": "module",
+  "keywords": ["gemini","gemini pro","chatgpt"],
+  "author": "",
+  "license": "ISC",
+  "scripts": {
+    "start": "esno packages/main/server.ts"
+  },
+  "devDependencies": {
+    "esno": "^4.7.0"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5"
+  }
+}

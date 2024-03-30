@@ -1,0 +1,22 @@
+{
+  "name": "generative-ai",
+  "version": "0.1.0",
+  "description": "Google AI JavaScript SDK",
+  "main": "index.js",
+  "module": "index.mjs",
+  "typings": "generative-ai.d.ts",
+  "exports": {
+    ".": {
+      "types": "./generative-ai.d.ts",
+      "require": "./index.js",
+      "import": "./index.mjs",
+      "default": "./index.js"
+    }
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "undici": "^6.10.2"
+  }
+}

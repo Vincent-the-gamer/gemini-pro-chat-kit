@@ -1,0 +1,15 @@
+{
+  "name": "main",
+  "version": "0.1.0",
+  "description": "",
+  "type": "module",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.12.2"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
