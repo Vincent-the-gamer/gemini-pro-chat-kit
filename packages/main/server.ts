@@ -21,15 +21,17 @@ app.all("*", function (req: any, res: any, next: any) {
 app.post("/chat", async (req: any, res: any) => {
    const { message } = req.body
    const result = await textOnlyChat(message)
+   res.set('Content-Type', 'application/json');
    res.end(JSON.stringify({ result }))
 })
 
 // 清空上下文
 app.get("/clear", (req: any, res: any) => {
     clearContext()
-    res.end({
+    res.set('Content-Type', 'application/json');
+    res.end(JSON.stringify({
         msg: "成功清除上下文！"
-    })
+    }))
 })
 
 /**
