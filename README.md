@@ -39,7 +39,7 @@ pnpm run start
 | API | 说明 | Method | 参数 | 返回值|
 | - | - | - | - | - |
 | /chat | 纯文本对话| POST | `{"message": "Feint是谁"}` | `{ "result": "Feint 是一名荷兰电子音乐制作人和 DJ。}` |
-| /clear | 清空上下文 | GET | `{ msg: "成功清除上下文！" }`  | 
+| /clear | 清空上下文 | GET | 无  | `{ msg: "成功清除上下文！" }` |
 
 ## TODO
 - 多模态对话
