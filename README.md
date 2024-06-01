@@ -13,8 +13,9 @@ export const proxyPort = 7890
 ```
 
 ## 如何启动项目?
-首先在项目根目录创建`.env`文件，然后填入
+首先将项目根目录的`.env.example`文件重命名为：`.env`，然后编辑
 ```
+# your_key改为您的api key
 API_KEY = your_key
 ```
 
