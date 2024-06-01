@@ -9,7 +9,7 @@
     "chatgpt"
   ],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "scripts": {
     "start": "forever start dist/server.cjs",
     "stop": "forever stopall",
