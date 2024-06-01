@@ -3,14 +3,23 @@
   "version": "0.1.0",
   "description": "一个解决了中国国内代理问题的Gemini Pro对话服务",
   "type": "module",
-  "keywords": ["gemini","gemini pro","chatgpt"],
+  "keywords": [
+    "gemini",
+    "gemini pro",
+    "chatgpt"
+  ],
   "author": "",
   "license": "ISC",
   "scripts": {
-    "start": "esno packages/main/server.ts"
+    "start": "forever start dist/server.cjs",
+    "stop": "forever stopall",
+    "build": "tsup"
   },
   "devDependencies": {
-    "esno": "^4.7.0"
+    "esno": "^4.7.0",
+    "forever": "^4.0.3",
+    "tsup": "^8.0.2",
+    "typescript": "^5.4.5"
   },
   "dependencies": {
     "dotenv": "^16.4.5"

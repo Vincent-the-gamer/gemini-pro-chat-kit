@@ -29,8 +29,14 @@ API_KEY = your_key
 # 安装依赖
 pnpm i 
 
-# 启动
+# 构建源码
+pnpm run build
+
+# 以守护进程启动(崩溃会自动重启)
 pnpm run start
+
+# 停止守护线程
+pnpm run stop
 ```
 
 ## 使用方法
@@ -41,5 +47,5 @@ pnpm run start
 | /chat | 纯文本对话| POST | `{"message": "Feint是谁"}` | `{ "result": "Feint 是一名荷兰电子音乐制作人和 DJ。}` |
 | /clear | 清空上下文 | GET | 无  | `{ msg: "成功清除上下文！" }` |
 
-## TODO
-- 多模态对话
+
+## 2024.6.1更新：崩溃自动重启
