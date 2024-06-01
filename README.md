@@ -36,7 +36,7 @@ pnpm run build
 # 以守护进程启动(崩溃会自动重启)
 pnpm run start
 
-# 停止守护线程
+# 停止守护进程
 pnpm run stop
 ```
 
@@ -47,6 +47,3 @@ pnpm run stop
 | - | - | - | - | - |
 | /chat | 纯文本对话| POST | `{"message": "Feint是谁"}` | `{ "result": "Feint 是一名荷兰电子音乐制作人和 DJ。}` |
 | /clear | 清空上下文 | GET | 无  | `{ msg: "成功清除上下文！" }` |
-
-
-## 2024.6.1更新：崩溃自动重启
