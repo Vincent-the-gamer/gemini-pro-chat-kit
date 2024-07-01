@@ -1,4 +1,6 @@
+// @ts-ignore
 import { GoogleGenerativeAI } from "../generative-ai/index"
+
 // please create file `.env` in the root of workspace, add write
 // API_KEY = xxx
 import dotenv from "dotenv"
@@ -15,7 +17,7 @@ export async function textOnlyChat(message: string) {
     // For text-only input, use the gemini-pro model
     // 纯文本聊天请使用gemini-pro模型
 
-    const model = genAI.getGenerativeModel({ model: "gemini-pro"});
+    const model = genAI.getGenerativeModel({ model: "gemini-pro" });
   
     const chat = model.startChat({
       history

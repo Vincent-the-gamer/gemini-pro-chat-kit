@@ -1,6 +1,6 @@
 {
   "name": "gemini-pro-chat-kit",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "一个解决了中国国内代理问题的Gemini Pro对话服务",
   "type": "module",
   "keywords": [
