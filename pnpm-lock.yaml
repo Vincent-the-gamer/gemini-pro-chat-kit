@@ -25,17 +25,17 @@ importers:
         specifier: ^5.4.5
         version: 5.4.5
 
-  packages/generative-ai:
-    dependencies:
-      undici:
-        specifier: ^6.10.2
-        version: 6.18.2
-
   packages/main:
     dependencies:
+      '@google/generative-ai':
+        specifier: ^0.14.0
+        version: 0.14.0
       express:
         specifier: ^4.19.2
         version: 4.19.2
+      undici:
+        specifier: ^6.19.2
+        version: 6.19.2
     devDependencies:
       '@types/express':
         specifier: ^4.17.21
@@ -328,6 +328,10 @@ packages:
     engines: {node: '>=12'}
     cpu: [x64]
     os: [win32]
+
+  '@google/generative-ai@0.14.0':
+    resolution: {integrity: sha512-wNgIGEpInlVd98SapqvnQX8HQz0zM43U9NMvrbIMKQzz2pQm60pJTeHHlICTDcy/yZNLsvFQ/RfD+Ck9H8K7vw==}
+    engines: {node: '>=18.0.0'}
 
   '@isaacs/cliui@8.0.2':
     resolution: {integrity: sha512-O8jcjabXaleOG9DQ0+ARXWZBTfnP4WNAqzuiJK7ll44AmxGKv/J2M4TPjxjY3znBCfvBXFzucm1twdyFybFqEA==}
@@ -1936,8 +1940,8 @@ packages:
   undici-types@5.26.5:
     resolution: {integrity: sha512-JlCMO+ehdEIKqlFxk6IfVoAUVmgz7cU7zD/h9XZ0qzeosSHmUJVOzSQvvYSYWXkFXC+IfLKSIffhv0sVZup6pA==}
 
-  undici@6.18.2:
-    resolution: {integrity: sha512-o/MQLTwRm9IVhOqhZ0NQ9oXax1ygPjw6Vs+Vq/4QRjbOAC3B1GCHy7TYxxbExKlb7bzDRzt9vBWU6BDz0RFfYg==}
+  undici@6.19.2:
+    resolution: {integrity: sha512-JfjKqIauur3Q6biAtHJ564e3bWa8VvT+7cSiOJHFbX4Erv6CLGDpg8z+Fmg/1OI/47RA+GI2QZaF48SSaLvyBA==}
     engines: {node: '>=18.17'}
 
   union-value@1.0.1:
@@ -2195,6 +2199,8 @@ snapshots:
 
   '@esbuild/win32-x64@0.20.2':
     optional: true
+
+  '@google/generative-ai@0.14.0': {}
 
   '@isaacs/cliui@8.0.2':
     dependencies:
@@ -3959,7 +3965,7 @@ snapshots:
 
   undici-types@5.26.5: {}
 
-  undici@6.18.2: {}
+  undici@6.19.2: {}
 
   union-value@1.0.1:
     dependencies:
