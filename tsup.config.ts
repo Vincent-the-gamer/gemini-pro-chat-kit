@@ -2,8 +2,8 @@ import { defineConfig } from 'tsup'
 
 export default defineConfig({
   entry: [
-    "packages/main/core.ts",
-    "packages/main/server.ts"
+    "packages/chat-kit/core.ts",
+    "packages/chat-kit/server.ts"
   ],
   format: ['cjs'],
   shims: true,
