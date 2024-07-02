@@ -7,8 +7,10 @@ export default async function useMarkdown() {
     md.use(await Shiki({
         themes: {
             light: 'vitesse-light',
-            dark: 'vitesse-dark',
-        }
+            dark: 'synthwave-84',
+        },
+        defaultColor: false,
+        cssVariablePrefix: '--s-',
     }))
 
     return md

@@ -7,9 +7,9 @@ body,
 }
 
 html {
-  background: rgb(255, 248, 243);
+  background: white;
 }
 
 html.dark {
-  background: #121212;
+  background: rgb(55, 55, 55);
 }

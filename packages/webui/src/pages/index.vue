@@ -1,19 +1,17 @@
 <script setup lang="ts" generic="T extends any, O extends any">
-import MessageBox from '../components/MessageBox.vue';
-
-// const router = useRouter()
-// function go() {
-//   if (name.value)
-//     router.push(`/hi/${encodeURIComponent(name.value)}`)
-// }
+// @ts-ignore
+import rena from "~/assets/logos/rena.png"
 </script>
 
 <template>
   <div>
-    <div i-carbon-campsite inline-block text-4xl />
+    <img :src="rena" alt="rena" w-15 h-15 m="0 auto"/>
+    <div py-1/>
     <p>Simple Chat UI</p>
     <p>
-      <em text-sm op75>For Gemini Pro Chat Kit</em>
+      <em text-sm op75>
+        For Gemini Pro Chat Kit
+      </em>
     </p>
 
     <nav mt-6 inline-flex gap-2 text-xl>
@@ -28,7 +26,7 @@ import MessageBox from '../components/MessageBox.vue';
     <div py-4 />
 
     <!-- message area -->
-    <div m="0 auto" h-fit w-60vw>
+    <div m="0 auto" h-fit w-80vw>
       <Suspense>
         <MessageBox />
       </Suspense>
