@@ -1,5 +1,5 @@
 {
-  "name": "main",
+  "name": "chat-kit",
   "version": "0.1.0",
   "description": "",
   "type": "module",
@@ -8,10 +8,10 @@
   "license": "MIT",
   "devDependencies": {
     "@types/express": "^4.17.21",
-    "@types/node": "^20.12.2"
+    "@types/node": "^20.14.9"
   },
   "dependencies": {
-    "@google/generative-ai": "^0.14.0",
+    "@google/generative-ai": "^0.14.1",
     "express": "^4.19.2",
     "undici": "^6.19.2"
   }
