@@ -25,7 +25,7 @@
         border="~ rounded gray-700 dark:gray-300" outline="none active:none" placeholder="Ask something..." resize-none
         h-100px />
 
-      <button m-3 text-sm btn h-10 @click="() => sendMessage(content)">
+      <button m-3 text-sm btn h-10 @click="async () => await sendMessage(content)">
         Let's Rock!
       </button>
     </div>
@@ -39,29 +39,14 @@ import wife1 from "~/assets/logos/wife1.png"
 import ai from "~/assets/logos/ai.png"
 import useMarkdown from "../hooks/markdown"
 
-// import { history } from "../../../chat-kit/core"
-
 const content = ref<string>()
 
 // @ts-ignore
 const markdown = await useMarkdown()
 
-const history = ref([
-  {
-    role: "user",
-    parts: [{ text: "啊啊啊spokfspfoddkp" }]
-  },
-  {
-    role: "model",
-    parts: [{ text: "# 一级标题 \n ```js\n console.log(1) \n``` " }]
-  }
-])
+const history = ref([])
 
 function sendMessage(text: string) {
-  history.value.push({
-    role: "user",
-    parts: [{ text }]
-  })
 
   content.value = null
 }

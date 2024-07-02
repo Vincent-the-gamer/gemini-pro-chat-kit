@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" width="200"
+        height="200" style="shape-rendering: auto; display: block; background: rgb(255, 255, 255);">
+        <g data-idx="1">
+            <g transform="matrix(1,0,0,1,20,50)" data-idx="2">
+                <circle fill="#5be1e1" r="6" cy="0" cx="0" data-idx="3"
+                    transform="matrix(0.9149593710899353,0,0,0.9149593710899353,0,0)">
+
+                </circle>
+            </g>
+            <g transform="matrix(1,0,0,1,40,50)" data-idx="5">
+                <circle fill="#966af8" r="6" cy="0" cx="0" data-idx="6"
+                    transform="matrix(0.6135249733924866,0,0,0.6135249733924866,0,0)">
+
+                </circle>
+            </g>
+            <g transform="matrix(1,0,0,1,60,50)" data-idx="8">
+                <circle fill="#e900ff" r="6" cy="0" cx="0" data-idx="9"
+                    transform="matrix(0.2645295560359955,0,0,0.2645295560359955,0,0)">
+
+                </circle>
+            </g>
+            <g transform="matrix(1,0,0,1,80,50)" data-idx="11">
+                <circle fill="#ff007b" r="6" cy="0" cx="0" data-idx="12"
+                    transform="matrix(0.021269962191581726,0,0,0.021269962191581726,0,0)">
+
+                </circle>
+            </g>
+            <g data-idx="14"></g>
+        </g>
+    </svg>
