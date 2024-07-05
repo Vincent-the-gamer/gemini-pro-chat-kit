@@ -1,5 +1,5 @@
 import express from "express"
-import { textOnlyChat, clearContext } from "./core"
+import { textOnlyChat, textOnlyChatWithStream, clearContext } from "./core"
 
 const app = express()
 
@@ -17,13 +17,24 @@ app.all("*", function (req: any, res: any, next: any) {
         next()
 })
 
-// 对话
+// 纯文本对话 -- 直接返回
 app.post("/chat", async (req: any, res: any) => {
    const { message } = req.body
    const result = await textOnlyChat(message)
    res.set('Content-Type', 'application/json');
    res.end(JSON.stringify({ result }))
 })
+
+// 纯文本对话 -- 流式返回
+app.post("/streamChat", async (req: any, res: any) => {
+    res.setHeader("Content-Type", "text/event-stream;charset=utf-8");
+    res.setHeader("Cache-Control", "no-cache");
+    res.setHeader("Connection", "keep-alive");
+    res.flushHeaders(); // flush the headers to establish SSE with client
+
+    const { message } = req.body
+    await textOnlyChatWithStream(message, res) // this will finally end the res
+ })
 
 // 清空上下文
 app.get("/clear", (req: any, res: any) => {

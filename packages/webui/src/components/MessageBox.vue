@@ -18,7 +18,7 @@
 
 
   <!-- Input Area -->
-  <div bg-white dark:bg-black fixed bottom-0 left-10vw w-100vw m="0 auto" p-2 z-2>
+  <div bg-white dark:bg-black fixed bottom-0 left-13vw w-100vw m="0 auto" p-2 z-2>
     <button m-3 text-sm btn bg-red absolute left-0 top-0 @click="clearMessage">
       Clear
     </button>
@@ -27,7 +27,7 @@
         border="~ rounded gray-700 dark:gray-300" outline="none active:none" placeholder="Ask something..." resize-none
         h-100px />
 
-      <button m-3 text-sm btn h-10 @click="async () => await sendMessage(content)">
+      <button m-3 text-sm btn h-10 @click="async () => await sendMessage()">
         Let's Rock!
       </button>
     </div>
@@ -40,32 +40,58 @@ import wife1 from "~/assets/logos/wife1.png"
 // @ts-ignore
 import ai from "~/assets/logos/ai.png"
 import useMarkdown from "../hooks/markdown"
+import { fetchEventSource } from '@microsoft/fetch-event-source';
+
+const { y } = useWindowScroll()
 
 const content = ref<string>()
 
 // @ts-ignore
 const markdown = await useMarkdown()
 
-const history = ref<Record<string, any>>([
-  {
-    role: "model",
-    parts: [{
-      text: "aa"
-    }]
-  }
-])
+const history = ref<Record<string, any>>([])
 
-function sendMessage(text: string) {
+async function sendMessage() {
   history.value.push({
     role: "user",
     parts: [{
-      text
+      text: content.value
     }]
   })
+
+  history.value.push({
+    role: "model",
+    parts: [{
+      text: ""
+    }]
+  })
+
+  await fetchEventSource("http://localhost:8080/streamChat", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      message: content.value
+    }),
+    onmessage(event) {
+      history.value[history.value.length - 1].parts[0].text = JSON.parse(event.data).result
+      y.value = document.documentElement.clientHeight
+    },
+    onerror(err) {
+      throw err
+    }
+  })
+
   content.value = null
+  // scroll window to bottom
+  setTimeout(() => {
+    y.value = document.documentElement.clientHeight
+  })
 }
 
 function clearMessage() {
+  axios.get("http://localhost:8080/clear").then()
   history.value = []
 }
 </script>
@@ -76,7 +102,13 @@ function clearMessage() {
   white-space: pre-wrap;
   word-break: break-all;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+  background-color: white;
+  text-align: left;
+}
+
+html.dark .message-box {
+  background-color: black;
 }
 
 .message-box.user {
@@ -89,6 +121,7 @@ function clearMessage() {
 
 .message-box:hover {
   scale: 1.1;
+  box-shadow: 0 0 15px gray;
 }
 
 .dialog-move,

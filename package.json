@@ -13,6 +13,7 @@
   "scripts": {
     "start": "forever start dist/server.cjs",
     "stop": "forever stopall",
+    "dev": "esno packages/chat-kit/server.ts",
     "build": "tsup",
     "dep": "taze major",
     "webui:dev": "pnpm -C packages/webui run serve",

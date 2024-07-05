@@ -9,6 +9,7 @@
     "dep": "taze"
   },
   "dependencies": {
+    "@microsoft/fetch-event-source": "^2.0.1",
     "@vueuse/core": "^10.11.0",
     "axios": "^1.7.2",
     "vue": "^3.4.31",
