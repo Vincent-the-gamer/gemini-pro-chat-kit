@@ -1,17 +1,19 @@
 <template>
   <div relative z-1 p-b-30>
-    <div v-for="item of history" :class="`message-box ${item.role}`" border="1px solid black dark:white rd-4" p-5 m-6>
-      <template v-if="item.role === 'model'">
-        <img :src="ai" alt="logo" h-15 w-15 />
-        <span p-4 v-html="markdown.render(item.parts[0].text)" />
-      </template>
-      <template v-else>
-        <span p-4>
-          {{ item.parts[0].text }}
-        </span>
-        <img :src="wife1" alt="logo" h-15 w-15 v-if="item.role === 'user'" />
-      </template>
-    </div>
+    <transition-group name="dialog">
+      <div v-for="item of history" :key="item" :class="`message-box ${item.role}`" border="1px solid black dark:white rd-4" p-5 m-6>
+        <template v-if="item.role === 'model'">
+          <img :src="ai" alt="logo" h-15 w-15 />
+          <span p-4 v-html="markdown.render(item.parts[0].text)" />
+        </template>
+        <template v-else>
+          <span p-4>
+            {{ item.parts[0].text }}
+          </span>
+          <img :src="wife1" alt="logo" h-15 w-15 v-if="item.role === 'user'" />
+        </template>
+      </div>
+    </transition-group>
   </div>
 
 
@@ -44,10 +46,22 @@ const content = ref<string>()
 // @ts-ignore
 const markdown = await useMarkdown()
 
-const history = ref([])
+const history = ref<Record<string, any>>([
+  {
+    role: "model",
+    parts: [{
+      text: "aa"
+    }]
+  }
+])
 
 function sendMessage(text: string) {
-
+  history.value.push({
+    role: "user",
+    parts: [{
+      text
+    }]
+  })
   content.value = null
 }
 
@@ -75,5 +89,21 @@ function clearMessage() {
 
 .message-box:hover {
   scale: 1.1;
+}
+
+.dialog-move,
+.dialog-enter-active,
+.dialog-leave-active {
+  transition: all 0.5s ease;
+}
+
+.dialog-enter-from,
+.dialog-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
+}
+
+.dialog-leave-active {
+  position: absolute;
 }
 </style>

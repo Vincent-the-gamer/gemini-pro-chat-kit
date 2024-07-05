@@ -47,3 +47,7 @@ pnpm run stop
 | - | - | - | - | - |
 | /chat | 纯文本对话| POST | `{"message": "Feint是谁"}` | `{ "result": "Feint 是一名荷兰电子音乐制作人和 DJ。}` |
 | /clear | 清空上下文 | GET | 无  | `{ msg: "成功清除上下文！" }` |
+
+
+## 前端页面(WebUI)
+开发中，为API搭建的一个极简化的聊天页面。
