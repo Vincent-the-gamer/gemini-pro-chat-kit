@@ -41,11 +41,13 @@ pnpm run stop
 ```
 
 ## 使用方法
-目前，拢共就俩API
+
+**PS: 流式传输使用GET请求，所以把参数拼接在url中**
 
 | API | 说明 | Method | 参数 | 返回值|
 | - | - | - | - | - |
-| /chat | 纯文本对话| POST | `{"message": "Feint是谁"}` | `{ "result": "Feint 是一名荷兰电子音乐制作人和 DJ。}` |
+| /chat | 纯文本对话(一次性返回)| POST | `{"message": "Feint是谁"}` | `{ "result": "Feint 是一名荷兰电子音乐制作人和 DJ。}` |
+| /streamChat | 纯文本对话(流式传输) | GET | `url?message=xxx` | `event-stream, 需要使用EventSource进行长连接` |
 | /clear | 清空上下文 | GET | 无  | `{ msg: "成功清除上下文！" }` |
 
 
