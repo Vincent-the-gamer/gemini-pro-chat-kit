@@ -24,10 +24,11 @@
     </button>
     <div flex="~ row items-center" p-t-10>
       <textarea v-model="content" type="text" p="x-4 y-2" w="65vw" text="left" bg="transparent"
-        border="~ rounded gray-700 dark:gray-300" outline="none active:none" placeholder="Ask something..." resize-none
+        border="~ rounded gray-700 dark:gray-300" outline="none active:none" placeholder="Ctrl/cmd + Enter for new line, Enter for send." resize-none
         h-100px />
 
-      <button m-3 text-sm btn h-10 @click="async () => await sendMessage()">
+      <button m-3 text-sm btn h-10 @click="async () => await sendMessage()"
+        @keyup.enter.exact="async () => await sendMessage()">
         Let's Rock!
       </button>
     </div>
@@ -39,6 +40,8 @@
 import wife1 from "~/assets/logos/wife1.png"
 // @ts-ignore
 import ai from "~/assets/logos/ai.png"
+
+const serverBase: string = import.meta.env.VITE_SERVER_BASE
 
 const { y } = useWindowScroll()
 
@@ -66,7 +69,9 @@ async function sendMessage() {
     }]
   })
 
-  const { data, close, status } = useEventSource(`http://localhost:8080/streamChat?message=${content.value}`)
+  
+
+  const { data, close, status } = useEventSource(`${serverBase}/streamChat?message=${content.value}`)
 
   watch(() => data.value, newVal => {
     const data = JSON.parse(newVal)
@@ -74,18 +79,19 @@ async function sendMessage() {
       close()
     } else {
       history.data[history.data.length - 1].parts[0].text = data.message
+      // scroll window to bottom
+      setTimeout(() => {
+        y.value = document.documentElement.clientHeight
+      })
     }
   })
 
   content.value = null
-  // scroll window to bottom
-  setTimeout(() => {
-    y.value = document.documentElement.clientHeight
-  })
+
 }
 
 function clearMessage() {
-  axios.get("http://localhost:8080/clear").then()
+  axios.get(`${serverBase}/clear`).then()
   history.data = []
 }
 </script>

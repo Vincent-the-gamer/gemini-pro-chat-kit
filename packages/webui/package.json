@@ -3,8 +3,8 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "build": "vite build",
-    "serve": "vite --open",
+    "build": "vite build --mode prod",
+    "serve": "vite --open --mode dev",
     "preview": "vite preview",
     "dep": "taze"
   },

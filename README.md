@@ -50,4 +50,34 @@ pnpm run stop
 
 
 ## 前端页面(WebUI)
-开发中，为API搭建的一个极简化的聊天页面。
+开发中，已实现流式传输。默认调用流式接口，现已基本可用。
+
+> [!NOTE]
+> 前端页面还不完善，但是可以用
+
+![webui1](.github/imgs/webui1.png)
+![webui2](.github/imgs/webui2.png)
+
+
+## 部署整个项目
+在`packages/webui/.env.prod`中配置你的后端接口base url:
+
+> [!NOTE]
+> 请注意，一定要保证后端的端口配置与你前端.env.prod的端口配置相同
+
+假设你的后端部署在`http://ciallo.yuzu:2333`
+
+```toml
+# .env.prod
+# 不要包含末尾的斜杠 '/'
+VITE_SERVER_BASE=http://ciallo.yuzu:2333
+```
+
+然后构建前后端即可:
+```shell
+# 构建前端
+pnpm run webui:build
+
+# 构建后端
+pnpm run build
+```
