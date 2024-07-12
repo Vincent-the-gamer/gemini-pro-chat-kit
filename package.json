@@ -1,6 +1,6 @@
 {
   "name": "gemini-pro-chat-kit",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "一个解决了中国国内代理问题的Gemini Pro对话服务",
   "type": "module",
   "keywords": [
@@ -15,14 +15,14 @@
     "stop": "forever stopall",
     "dev": "esno packages/chat-kit/server.ts",
     "build": "tsup",
-    "dep": "taze major",
+    "dep": "taze major -r",
     "webui:dev": "pnpm -C packages/webui run serve",
     "webui:build": "pnpm -C packages/webui run build"
   },
   "devDependencies": {
     "esno": "^4.7.0",
     "forever": "^4.0.3",
-    "taze": "^0.14.0",
+    "taze": "^0.14.2",
     "tsup": "^8.1.0",
     "typescript": "^5.5.3"
   },

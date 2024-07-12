@@ -26,13 +26,13 @@ app.post("/chat", async (req: any, res: any) => {
 })
 
 // 纯文本对话 -- 流式返回
-app.post("/streamChat", async (req: any, res: any) => {
+app.get("/streamChat", async (req: any, res: any) => {
     res.setHeader("Content-Type", "text/event-stream;charset=utf-8");
     res.setHeader("Cache-Control", "no-cache");
     res.setHeader("Connection", "keep-alive");
     res.flushHeaders(); // flush the headers to establish SSE with client
 
-    const { message } = req.body
+    const { message } = req.query
     await textOnlyChatWithStream(message, res) // this will finally end the res
  })
 

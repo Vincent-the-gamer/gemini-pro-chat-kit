@@ -64,19 +64,22 @@ export async function textOnlyChatWithStream(message: string, res: any) {
       parts: [{ text: message }],
     })
 
-    let text = '';
+    let text = ''
+
     for await (const chunk of result.stream) {
-      const chunkText = chunk.text();
-      text += chunkText;
-      console.log(text)
-      res.write(`data: ${chunk}`)
+      text += chunk.text()
+      res.write(`data: ${JSON.stringify({
+        message: text
+      })}\n\n`)
     }
 
     history.push({
       role: "model",
       parts: [{ text }],
     })
-
+    res.write(`data: ${JSON.stringify({
+      close: true
+    })}\n\n`)
     res.end()
 }
 

@@ -1,7 +1,7 @@
 <template>
   <div relative z-1 p-b-30>
     <transition-group name="dialog">
-      <div v-for="item of history" :key="item" :class="`message-box ${item.role}`" border="1px solid black dark:white rd-4" p-5 m-6>
+      <div v-for="item of history.data" :key="item" :class="`message-box ${item.role}`" border="1px solid black dark:white rd-4" p-5 m-6>
         <template v-if="item.role === 'model'">
           <img :src="ai" alt="logo" h-15 w-15 />
           <span p-4 v-html="markdown.render(item.parts[0].text)" />
@@ -39,8 +39,6 @@
 import wife1 from "~/assets/logos/wife1.png"
 // @ts-ignore
 import ai from "~/assets/logos/ai.png"
-import useMarkdown from "../hooks/markdown"
-import { fetchEventSource } from '@microsoft/fetch-event-source';
 
 const { y } = useWindowScroll()
 
@@ -49,37 +47,33 @@ const content = ref<string>()
 // @ts-ignore
 const markdown = await useMarkdown()
 
-const history = ref<Record<string, any>>([])
+const history = reactive({
+  data: []
+})
 
 async function sendMessage() {
-  history.value.push({
+  history.data.push({
     role: "user",
     parts: [{
       text: content.value
     }]
   })
 
-  history.value.push({
+  history.data.push({
     role: "model",
     parts: [{
       text: ""
     }]
   })
 
-  await fetchEventSource("http://localhost:8080/streamChat", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      message: content.value
-    }),
-    onmessage(event) {
-      history.value[history.value.length - 1].parts[0].text = JSON.parse(event.data).result
-      y.value = document.documentElement.clientHeight
-    },
-    onerror(err) {
-      throw err
+  const { data, close, status } = useEventSource(`http://localhost:8080/streamChat?message=${content.value}`)
+
+  watch(() => data.value, newVal => {
+    const data = JSON.parse(newVal)
+    if(data.close && status.value !== "CLOSED") {
+      close()
+    } else {
+      history.data[history.data.length - 1].parts[0].text = data.message
     }
   })
 
@@ -92,7 +86,7 @@ async function sendMessage() {
 
 function clearMessage() {
   axios.get("http://localhost:8080/clear").then()
-  history.value = []
+  history.data = []
 }
 </script>
 

@@ -1,7 +1,7 @@
 import MarkdownIt from 'markdown-it'
 import Shiki from '@shikijs/markdown-it'
 
-export default async function useMarkdown() {
+export async function useMarkdown() {
     const md = MarkdownIt()
 
     md.use(await Shiki({
@@ -15,4 +15,3 @@ export default async function useMarkdown() {
 
     return md
 }
-
