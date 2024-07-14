@@ -5,8 +5,7 @@
   "scripts": {
     "build": "vite build --mode prod",
     "serve": "vite --open --mode dev",
-    "preview": "vite preview",
-    "dep": "taze"
+    "preview": "vite preview"
   },
   "dependencies": {
     "@vueuse/core": "^10.11.0",

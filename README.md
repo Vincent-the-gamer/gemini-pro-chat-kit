@@ -57,15 +57,14 @@ pnpm run stop
 > [!NOTE]
 > 前端页面还不完善，但是可以用
 
-![webui1](.github/imgs/webui1.png)
-![webui2](.github/imgs/webui2.png)
+![webui](.github/imgs/webui.png)
 
 
 ## 部署整个项目
-在`packages/webui/.env.prod`中配置你的后端接口base url:
+在前端项目`packages/webui/.env.prod`中配置你的后端接口base url:
 
 > [!NOTE]
-> 请注意，一定要保证后端的端口配置与你前端.env.prod的端口配置相同
+> 请注意，一定要保证后端的端口配置与你前端.env.prod的端口配置相同。确保`packages/chat-kit/server.ts`中的端口配置正确
 
 假设你的后端部署在`http://ciallo.yuzu:2333`
 

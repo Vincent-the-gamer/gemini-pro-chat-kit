@@ -18,11 +18,12 @@
 
 
   <!-- Input Area -->
-  <div bg-white dark:bg-black fixed bottom-0 left-13vw w-100vw m="0 auto" p-2 z-2>
-    <button m-3 text-sm btn bg-red absolute left-0 top-0 @click="clearMessage">
+  <div style="box-shadow: 0 0 15px gainsboro;"
+  bg-white dark:bg-black fixed bottom-0 left-0 w-100vw m="0 auto" p-2 z-2>
+    <button m-3 text-sm btn bg-red absolute left-13vw top-0 @click="clearMessage">
       Clear
     </button>
-    <div flex="~ row items-center" p-t-10>
+    <div flex="~ row items-center justify-center" p-t-10>
       <textarea v-model="content" type="text" p="x-4 y-2" w="65vw" text="left" bg="transparent"
         border="~ rounded gray-700 dark:gray-300" outline="none active:none" placeholder="Ctrl/cmd + Enter for new line, Enter for send." resize-none
         h-100px />
