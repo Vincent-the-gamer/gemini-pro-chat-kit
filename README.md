@@ -22,7 +22,7 @@ API_KEY = your_key
 ### 申请API Key
 申请Gemini Pro API Key: [https://makersuite.google.com/app/apikey](https://makersuite.google.com/app/apikey)
 
-具体过程可以参考我的博客的其中一部分：[https://blog.vince-g.xyz/#/posts/deploy-gemini-pro](https://blog.vince-g.xyz/#/posts/deploy-gemini-pro)
+具体过程可以参考我的博客的其中一部分：[https://blog.vince-g.xyz/posts/deploy-gemini-pro](https://blog.vince-g.xyz/posts/deploy-gemini-pro)
 
 然后
 
