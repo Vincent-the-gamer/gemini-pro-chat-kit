@@ -42,6 +42,8 @@ import wife1 from "~/assets/logos/wife1.png"
 // @ts-ignore
 import ai from "~/assets/logos/ai.png"
 
+const emitter = defineEmits(["toggleHeader"])
+
 const serverBase: string = import.meta.env.VITE_SERVER_BASE
 
 const { y } = useWindowScroll()
@@ -56,6 +58,10 @@ const history = reactive({
 })
 
 async function sendMessage() {
+  if(history.data.length < 1) {
+    emitter("toggleHeader")
+  }
+
   history.data.push({
     role: "user",
     parts: [{
@@ -69,8 +75,6 @@ async function sendMessage() {
       text: ""
     }]
   })
-
-  
 
   const { data, close, status } = useEventSource(`${serverBase}/streamChat?message=${content.value}`)
 
@@ -94,6 +98,7 @@ async function sendMessage() {
 function clearMessage() {
   axios.get(`${serverBase}/clear`).then()
   history.data = []
+  emitter("toggleHeader")
 }
 </script>
 
